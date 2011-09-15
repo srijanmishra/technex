@@ -22,3 +22,13 @@ def register(request):
                     'form': form,
                     }
     return render_to_response('form.html', templateData, context_instance=RequestContext(request))
+
+def serialize_to_json(request,eventname):
+	try:
+		e = str(eventname)
+		e = Event.objects.filter(name=e)
+		data = serializers.serialize("json", e)
+		response = HttpResponse(data, mimetype="application/json")
+	except ObjectDoesNotExist:
+		response = "<html><body> <h1>" + eventname + "</h1> </body> </html>"
+	return HttpResponse(response)
