@@ -33,4 +33,5 @@ urlpatterns = patterns('',
 	url(r'^events/$' , views.serialize_to_json),
     url(r'^eventinfo/$' , direct_to_template, {'template': 'eventinfo.html'}),
     url(r'^eventspanel/$' , direct_to_template, {'template': 'eventspanel.html'}),
+    url(r'^register/$' , views.register),
 )
