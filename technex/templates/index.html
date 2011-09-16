@@ -1,0 +1,155 @@
+{% extends "extended.html" %} 
+
+{% block subcontent1 %}   
+	
+    <div id="wrapper" style="margin:0px;">
+        <div id="fake">
+            <div id="c1" class="content-box">
+                <div class="inner">
+				    <div class="demo">
+
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">KNOW TECHNEX</a></li>      
+                            </ul>
+                            <div id="tabs-1">
+                                    <p>Technex is the annual technical festival of Institute of Technology, Banaras Hindu 
+                                    University, Varanasi, India. The festival hosts a variety of events targeting the 
+                                    improvement in technical and innovative thinking of the students. Various competitions
+                                    for students to test out their wits, lectures which nourish the young minds with knowledge 
+                                    and experience of intellectual and experienced guests, and workshops 
+                                    to learn and improve skills are part of this prestigious technical festival of IT-BHU.<p>
+                            </div>
+                                
+                        </div>
+
+                    </div><!-- End demo -->		
+                </div>
+			</div>
+                
+            <div id="c2" class="content-box">
+                <div class="inner">
+                    <div class="demo">
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">SPONSORS...</a></li>             
+                            </ul>
+                                
+                            <div id="tabs-1">
+                                    <div style="position:relative;width:100%;top:80px">
+                                       <BR> SPONSOR1 </BR>
+                                       <BR>SPONSOR2 </BR>       
+                                    </div>
+                            </div>
+                                
+                        </div>
+
+                    </div><!-- End demo -->
+                        
+						
+                        
+				</div>
+			</div>
+		    <div id="c3" class="content-box">
+		        <div class="inner">
+                    <div class="demo">
+                    
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">REGISTRATION...</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                
+                                <form method="POST" action="action.py" autocomplete = "off" name="login"style="line-height:15px;cursor:default">
+                                    <input type="text" name="name" size=100 placeholder="Full Name"><br/><br/>
+                                    <input type="text" name="usr" size=100 placeholder="User Name"><br/><br/>
+                                    <select name="gender">
+                                    <option value="">Gender</option>
+                                    <option name="male">MALE</option>
+                                    <option name="female">FEMALE</option>
+                                    </select><br/><br/>
+                                    <input type="text" name="mail" placeholder="Email Address" size=100 ><br/><br/>
+                                    <input type="password" name="pass" placeholder="Password" size=100><br/><br/>
+                                    <select name="clg">
+				    		            <option value="">College/School</option>
+                                            {% for college in object_list %}                                 
+				    			            <option name={{ college.name }}>{{ college.name }}</option>
+				    			            {% endfor %}
+                                    </select><br><br/>
+                                    <input type="text" name="contact" size=100 placeholder="Contact Number"><br/><br/>
+                                    <input type="submit" value="Submit" name="submit" style="padding:10px 100px"><br/><br/>
+                                </form>
+                                                    
+                            </div>
+                        </div>
+                    </div><!-- End demo -->
+                </div>
+            </div>   
+
+	        <div id="c4" class="content-box">
+	            <div class="inner">
+                    <div class="demo">
+                        <div id="tabs"> 
+                            <ul>
+                                <li><a href="#tabs-1">MY PAGE</a></li>
+                                <li><a href="#tabs-2">NOTIFICATIONS</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                <p>EVENT REGISTERED = 0</p>
+                                <p>RESISTARTION STATUS </p>
+                            </div>
+                            <div id="tabs-2">
+                            <p>No New Notifications</p>
+                            </div>                        
+                            </div>
+                        </div><!-- End demo -->
+                       
+                    </div>
+                </div>
+                
+            <div id="c5" class="content-box">
+					<!-- EVENT PANEL CONTENT HERE IS BEING LOADED THROUGH AJAX-->
+			</div>
+                
+            <div id="c6" class="content-box">
+			    <div class="inner">
+                    <div class="demo">
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">GUEST LECTURES </a></li>
+                                <li><a href="#tabs-2">WORKSHOPS...</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                <p font="24pt">THIS YEAR WE ARE PLANNING TO NOT HAVE GUEST LECTURES</p>
+                            </div>
+                            <div id="tabs-2">
+                                <p>DONT WORRY .....THERE WILL BE WORKSHOPS</p>
+                            </div>
+                        </div>
+                    </div><!-- End demo -->
+                </div>
+		    </div>
+                
+            <div id="c7" class="content-box">
+		        <div class="inner">
+                    <div class="demo">
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">HOSPITALITY</a></li>
+                                <li><a href="#tabs-2">CONTACTS...</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                <p>WE CAN PROMISE FOR EXCELLENT FOODING BUT CANT SAY ABOOUT LOGGING</p>
+                            </div>
+                            <div id="tabs-2">
+                                <p>FEEL FREE TO CONTACT US ON ANY OF NON WORKING NUMBERS.....</p>
+                            </div>
+                        </div>
+                    </div><!-- End demo -->
+                </div>
+		    </div>
+				
+	    </div><!-- div id="fake" -->
+    </div><!-- div id="wrapper" -->
+        
+{% endblock %}
