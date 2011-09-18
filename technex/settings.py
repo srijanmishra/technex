@@ -8,7 +8,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Kushagra Sinha', 'sinha.kushagra@gmail.com'),
+    # ('Your Name', 'your_email@example.com'),
 )
 
 MANAGERS = ADMINS
@@ -16,11 +16,11 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'technex',                      # Or path to database file if using sqlite3.
-        'USER': 'kushagra',                      # Not used with sqlite3.
-        'PASSWORD': 'abc123',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'NAME': 'technex1',                      			# Or path to database file if using sqlite3.
+        'USER': 'pranjal',                      				# Not used with sqlite3.
+        'PASSWORD': 'iinetctp',                  					# Not used with sqlite3.
+        'HOST': '',                      					# Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      					# Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -60,7 +60,8 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = '/home/pranjal/django/technex/static'
+
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -76,6 +77,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+	os.path.join(PROJECT_ROOT, 'app/static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -104,7 +106,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'technex.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

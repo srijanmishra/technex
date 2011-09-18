@@ -73,7 +73,7 @@
                                     <select name="clg">
 				    		            <option value="">College/School</option>
                                             {% for college in object_list %}                                 
-				    			            <option name={{ college.name }}>{{ college.name }}</option>
+				    			            <option name= {{ college.name }} > {{ college.name }} </option>
 				    			            {% endfor %}
                                     </select><br><br/>
                                     <input type="text" name="contact" size=100 placeholder="Contact Number"><br/><br/>
@@ -108,6 +108,7 @@
                 </div>
                 
             <div id="c5" class="content-box">
+                <!-- div#c5 Content Loaded through AJAX -->
 				<div class="inner">	
                     <div class="demo">
                         <div id="tabs">                                
