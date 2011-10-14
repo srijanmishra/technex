@@ -1,6 +1,6 @@
 {% extends "extended.html" %} 
 
-{% block subcontent1 %}   
+{% block subcontent_panels %}   
 	
     <div id="wrapper" style="margin:0px;">
         <div id="fake">
@@ -59,23 +59,26 @@
                                 <li><a href="#tabs-1">REGISTRATION...</a></li>
                             </ul>
                             <div id="tabs-1">
-
                                 {% block formcontent %}
                                     {% if not registration_successful %}
-                                        <form action="." method="POST" name="login"> <!-- autocomplete = "off"  style="line-height:15px;cursor:default" -->
+                                        <!--form action="." method="POST" name="login"> <!-- autocomplete = "off"  style="line-height:15px;cursor:default" -->
+                                        {#% csrf_token %#} 
+                                        <!--ul-->
+                                      <form action="." method="post">
                                         {% csrf_token %}
-                                        <ul>
-                                        {{ form.as_table }}
-                                        </ul>
-                                        <input type="submit" value="Submit" />
+                                        {% for field in form %}
+                                            <div class="fieldWrapper">
+                                            {{ field.label_tag }}: {{ field }} {{ field.errors }}
+                                            </div>
+                                        {% endfor %}
+                                        <input type="submit" value="Submit" />                                       
                                         </form>
                                     {% else %}
                                         CONGRATULATIONS! YOU HAVE BEEN REGISTERED FOR TECHNEX 2012
                                     {% endif %}
                                 {% endblock %}
 
-                                </form>
-                                                    
+                                <!--/form-->                       
                             </div>
                         </div>
                     </div><!-- End demo -->
@@ -87,21 +90,34 @@
                     <div class="demo">
                         <div id="tabs"> 
                             <ul>
-                                <li><a href="#tabs-1">MY PAGE</a></li>
-                                <li><a href="#tabs-2">NOTIFICATIONS</a></li>
+                                <li><a href="#tabs-1">GENERAL NOTIFICATIONS</a></li>
+                                <li><a href="#tabs-2">MY PAGE</a></li>
                             </ul>
                             <div id="tabs-1">
-                                <p>EVENT REGISTERED = 0</p>
-                                <p>RESISTARTION STATUS </p>
+                                {% block notificationcontent %}
+                                        <BR></BR>
+                                        {% if general_notifs %}
+                                            <ol>
+                                                {% for g_notif in general_notifs %}
+                                                    <li>  {{ g_notif.title }} : {{ g_notif.body }} </li>
+                                                {% endfor %}
+                                            </ol>
+                                        {% else %}
+                                            THERE ARE NO NEW NOTIFICATIONS!
+                                        {% endif %}
+                                {% endblock %} 
                             </div>
-                            <div id="tabs-2">
-                            <p>No New Notifications</p>
-                            </div>                        
-                            </div>
-                        </div><!-- End demo -->
-                       
-                    </div>
-                </div>
+                            <div id="tabs-2">  
+                                 {% if user.is_authenticated %}
+                                    <p>Welcome, {{ user.username }}. </p>
+                                    {% else %}
+                                    <p>Welcome GUEST!, You must be logged in to view this page. </p>
+                                {% endif %}                    
+                            </div>                   
+                        </div>
+                    </div><!-- End demo -->
+                </div> <!--End inner -->
+            </div>
                 
             <div id="c5" class="content-box">
                 <!-- div#c5 Content Loaded through AJAX everytime on click on Events Icon -->

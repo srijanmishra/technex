@@ -17,6 +17,7 @@
 	<script src="{{ STATIC_URL }}js/jquery.js" type="text/javascript"></script>
     <script src="{{ STATIC_URL }}js/jquery-ui-1.8.14.custom.min.js" type="text/javascript"></script>
 	<script src="{{ STATIC_URL }}js/timer.js" type="text/javascript"></script>
+	<script src="{{ STATIC_URL }}js/csrfsolver.js" type="text/javascript"></script>
 
 	<script type="text/javascript">
        $(document).ready(function(){
@@ -30,35 +31,38 @@
             $(function() {
             $( "div#tabs" ).tabs();
             });
+            {% if registration_successful %}
+                panelswitch(2,50);
+            {% endif %}
             });    
 		
 	    function geteventinfo(){
 	        $.ajax({
-            url: "eventspanel/",
+            url: "/eventspanel/",
             dataType: "html",   
             async: true,
             success: function(response){
                 $("div#c5").html(response);
-	            panelswitch(4,50);
+                panelswitch(4,50);
             }
             });
-	    };
+	        };
     </script>
 
     <script type="text/javascript">
 
         function ajaxrequest_event(eventname){
             $.ajax({
-                url: "events/",
+                url: "/events/",
                 global: false,
                 type: "POST",
-                data: {event_name : eventname},
+                data: {event_name : eventname , csrfmiddlewaretoken : getCookie('csrftoken')},
                 dataType: "html",
                 async: true,
                 success: function(response2){
                     global: event_obj = $.parseJSON(response2);
 	                $.ajax({
-                        url: "eventinfo",
+                        url: "/eventinfo/",
                         dataType: "html",   
                         async: true,
                         success: function(response3){
@@ -71,6 +75,33 @@
 	    };
 
     </script>
+
+    <script type="text/javascript">
+        function ajaxrequest_mypage(){
+            $.ajax({
+                url: "/mypage/",
+                type: "POST",
+                data: {csrfmiddlewaretoken : getCookie('csrftoken')},
+                dataType: "html",
+                async: true,
+                success: function(response4){
+                            {% if user.is_authenticated %}
+                                global: mypage_obj = $.parseJSON(response4);
+                                event_notif_objects = mypage_obj.event_notifications;
+                                for (i=0 ; event_notif_objects[i] != undefined ; i++) {
+                                    $("div#c4 div#tabs-2").append(event_notif_objects[0].title + " : ");                    
+                                    $("div#c4 div#tabs-2").append(event_notif_objects[0].body);
+                                }
+                            panelswitch(3,50);
+                            {% else %}
+                                document.location = "/accounts/login";
+                            {% endif %}                              
+                }
+            });
+
+	    };
+    </script>
+
 
 	<style type="text/css">
 		.nomarg img
@@ -98,8 +129,11 @@
 {% block content %}
 
     <img src="{{ STATIC_URL }}pics/sponsors/a.png" style="height:65px;" />
+    
+    {% block subcontent_login %} 
+    {% endblock %}
 
-    {% block subcontent1 %}
+    {% block subcontent_panels %}
     {% endblock %}
 
 	    <!--script src="http://www.google.com/jsapi" type="text/javascript"></script>
@@ -113,7 +147,7 @@
                 {% endif %}
             </script>
 
-    {% block subcontent2 %}
+    {% block subcontent_dock %}
 	    <div id="out">
             <div style="float:left;margin-top:55px">
             <img src="{{ STATIC_URL }}pics/but1.png" style="height:45px;width:65px;" title="Back" onClick="panelswitch(currpanelind() - 1 , 1);"/>&nbsp;
@@ -127,7 +161,7 @@
                 <ul id="navlist">
                     <li title="SPONSORS" id="spon" onClick="panelswitch(1,50)"></li>
                     <li title="REGISTER ME @ TECHNEX 2012" id="reg" onClick="panelswitch(2,50)"></li>
-                    <li title="MYPAGE" id="mypage" onClick="panelswitch(3,50)"></li>
+                    <li title="MYPAGE" id="mypage" onClick="ajaxrequest_mypage();"></li>
                     <li title="EXPERIENCE THE HEAT OF THE HOT EVENTS" id="event" onClick="geteventinfo();"></li>
                     <li title="LECTURE SERIES:GET READY TO BE ENLIGHTENED" id="guest" onClick="panelswitch(5,50)"></li>
                     <li title="CONTACT US" id="con" onclick="panelswitch(6,50)"></li>
