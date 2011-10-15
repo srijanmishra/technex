@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
+#from django.contrib.auth import logout
 from django.forms import ModelForm, CheckboxSelectMultiple
 from django.forms.widgets import *
 from technex.app.models import *
@@ -13,12 +14,23 @@ class RegistrationForm(UserCreationForm):
         model = UserProfile
         fields = ('name', 'username', 'password1', 'password2', 'email', 'contact', 'gender', 'college',)
 
+#class TeamRegistrationForm(ModelForm):
+#    def __init__(self, user, *args, **kwargs):
+#        team_set = user.team_set.all()
+#        self.fields['participants'].queryset = team_set
+#    class Meta:
+#        model = Team
+#        fields = ('name', 'participants',)
+#        widgets = {
+#                  'participants': SelectMultiple,
+#                    }
+
 class TeamRegistrationForm(ModelForm):
     class Meta:
         model = Team
         fields = ('name', 'participants',)
         widgets = {
-            'participants': SelectMultiple,
+            'participants': CheckboxSelectMultiple,
         }
 
 class EventRegistrationForm(ModelForm):
@@ -28,6 +40,10 @@ class EventRegistrationForm(ModelForm):
         widgets = {
             'participant_teams': CheckboxSelectMultiple,
         }
+
+#def logout_view(request):
+    #logout(request)
+    # Redirect to a success page.
 
 def index(request):
     #Registration Check
@@ -122,19 +138,29 @@ def my_page(request):
     #(on the basis of the events he has registered for)
     user = UserProfile.objects.get(name = request.user)
     team_set = user.team_set.all()
+    eventnotif_set = None
     for team in team_set:
         event_set = team.event_set.all()
         for event in event_set:
             eventnotif_set = event.eventnotification_set.all()
-    eventnotif_set = eventnotif_set.distinct()
-
-    #Converting  the eventnotif_set queryset object to a JSON response
+    
+    # At this point if there are no event notifications for the 'user' then eventnotif_set is None
     eventnotif_list = []
-    for i in range(0,len(eventnotif_set)):
+    if eventnotif_set != None :
+        eventnotif_set = eventnotif_set.distinct()
+
+        #Converting  the eventnotif_set queryset object to a JSON response
+
+        for i in range(0,len(eventnotif_set)):
+            eventnotif_list +=[{ 
+                                    'title' : eventnotif_set[i].title,
+                                    'body': eventnotif_set[i].body
+                                }]
+    else:
         eventnotif_list +=[{ 
-                                'title' : eventnotif_set[i].title,
-                                'body': eventnotif_set[i].body
-                               }]
+                                'title' : 'NOTIFICATIONS EMPTY ',
+                                'body': 'HEY! YOU DO NOT HAVE ANY NOTIFICATIONS SPECIFIC TO THE EVENTS YOU HAVE REGISTERED FOR'
+                           }]
 
     eventnotif_dict = {'event_notifications' : eventnotif_list }
     data = dumps(eventnotif_dict)

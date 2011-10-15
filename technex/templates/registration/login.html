@@ -2,19 +2,42 @@
 {# load url from future #}
 
 {% block subcontent_login %}
-    {% if form.errors %}
-        <p class="error">Sorry, that's not a valid username or password</p>
-    {% endif %}
-    <form action="" method="post">
-        {% csrf_token %}
-        <label for="username">User name:</label>
-        <input type="text" name="username" value="" id="username"><br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" value="" id="password"><br>
-        <input type="submit" value="Login" />
-        <input type="hidden" name="next" value="{{ next|escape }}" />
-    </form>
-    <p>
-        <a href="/accounts/password/reset/">Forgot password?</a>
-    </p>
+    
+        <div id="fake">
+            <div id="c1" class="content-box">
+                <div class="inner">
+				    <div class="demo">
+
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">Login</a></li>      
+                            </ul>
+                            <div id="tabs-1">
+                                <div style="position:relative;left:500px;top:50px;">
+                                    {% if form.errors %}
+                                        <p class="error">Sorry, that's not a valid username or password</p>
+                                    {% endif %}
+                                    <form action="" method="post">
+                                        {% csrf_token %}
+                                        <label for="username">User name:</label>
+                                        <input type="text" name="username" value="" id="username"><br>
+                                        <label for="password">Password:</label>
+                                        <input type="password" name="password" value="" id="password"><br>
+                                        <input type="submit" value="Login" />
+                                        <input type="hidden" name="next" value="{{ next|escape }}" />
+                                    </form>
+                                    <p>
+                                        <a href="/accounts/password/reset/">Forgot password?</a>
+                                    </p>
+                                </div>
+                            </div>
+                                
+                        </div>
+
+                    </div><!-- End demo -->		
+                </div>
+			</div>
+        </div>
+	
+    
 {% endblock %}

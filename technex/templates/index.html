@@ -1,7 +1,14 @@
 {% extends "extended.html" %} 
 
 {% block subcontent_panels %}   
-	
+
+    {% if user.is_authenticated %}
+	<p style="float:left;right:150px;top:30px;position:absolute;color:#0078a3;"><i>Welcome,   {{user.username}}</i></p>
+	<a href="/accounts/logout/"><input type="button" value="Logout"style="color:#fff;float:left;right:20px;top:20px;position:absolute;padding:2px 20px;border-color:#0078a3;border-radius:5px;background-color:#0078a3;"/></a>
+    {% else %}
+    <a href="/accounts/login/"><input type="button" value="Login"style="color:#fff;float:left;right:20px;top:20px;position:absolute;padding:2px 20px;border-color:#0078a3;border-radius:5px;background-color:#0078a3;"/></a>
+    {% endif %}
+   
     <div id="wrapper" style="margin:0px;">
         <div id="fake">
             <div id="c1" class="content-box">
@@ -59,6 +66,7 @@
                                 <li><a href="#tabs-1">REGISTRATION...</a></li>
                             </ul>
                             <div id="tabs-1">
+                                <div>
                                 {% block formcontent %}
                                     {% if not registration_successful %}
                                         <!--form action="." method="POST" name="login"> <!-- autocomplete = "off"  style="line-height:15px;cursor:default" -->
@@ -78,7 +86,8 @@
                                     {% endif %}
                                 {% endblock %}
 
-                                <!--/form-->                       
+                                <!--/form--> 
+                            </div>                      
                             </div>
                         </div>
                     </div><!-- End demo -->
