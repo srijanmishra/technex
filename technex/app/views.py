@@ -51,7 +51,7 @@ def index(request):
     reg_success = False
     if request.method == "POST":
         form = RegistrationForm(request.POST)
-        if form.is_valid():         
+        if form.is_valid():
             form.save()
             reg_success = True
         else:
