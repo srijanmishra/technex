@@ -8,7 +8,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Kushagra Sinha', 'sinha.kushagra@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -16,11 +16,10 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'technex',                      			# Or path to database file if using sqlite3.
-        'USER': 'kushagra',                      				# Not used with sqlite3.
-        'PASSWORD': 'abc123',                  					# Not used with sqlite3.
-        'HOST': '',                      					# Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      					# Set to empty string for default. Not used with sqlite3.
+        'NAME': 'technex',                      # Or path to database file if using sqlite3.
+        'USER': 'kushagra',                      # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
