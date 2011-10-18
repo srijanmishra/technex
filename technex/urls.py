@@ -19,8 +19,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-	url(r'^$', views.index),
-	url(r'^events/$' , views.serialize_to_json),
+    url(r'^$', views.index),
+    url(r'^events/$' , views.serialize_to_json),
     url(r'^eventinfo/$' , direct_to_template, {'template': 'eventinfo.html'}),
     url(r'^eventspanel/$' , direct_to_template, {'template': 'eventspanel.html'}),
     url(r'^mypage/$' , views.my_page),

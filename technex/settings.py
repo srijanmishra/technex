@@ -16,9 +16,9 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'technex1',                      			# Or path to database file if using sqlite3.
-        'USER': 'pranjal',                      				# Not used with sqlite3.
-        'PASSWORD': 'iinetctp',                  					# Not used with sqlite3.
+        'NAME': 'technex',                      			# Or path to database file if using sqlite3.
+        'USER': 'kushagra',                      				# Not used with sqlite3.
+        'PASSWORD': 'abc123',                  					# Not used with sqlite3.
         'HOST': '',                      					# Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      					# Set to empty string for default. Not used with sqlite3.
     }
@@ -60,7 +60,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/home/pranjal/django/technex/static'
+STATIC_ROOT = ''
 
 
 # URL prefix for static files.
@@ -70,7 +70,7 @@ STATIC_URL = '/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -106,7 +106,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'technex.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
