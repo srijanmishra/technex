@@ -1,0 +1,206 @@
+{% extends "extended.html" %} 
+
+{% block subcontent_panels %}   
+
+    {% if user.is_authenticated %}
+	<p style="float:left;right:150px;top:30px;position:absolute;color:#0078a3;"><i>Welcome,   {{user.username}}</i></p>
+	<a href="/accounts/logout/"><input type="button" value="Logout"style="color:#fff;float:left;right:20px;top:20px;position:absolute;padding:2px 20px;border-color:#0078a3;border-radius:5px;background-color:#0078a3;"/></a>
+    {% else %}
+    <a href="/accounts/login/"><input type="button" value="Login"style="color:#fff;float:left;right:20px;top:20px;position:absolute;padding:2px 20px;border-color:#0078a3;border-radius:5px;background-color:#0078a3;"/></a>
+    {% endif %}
+   
+    <div id="wrapper" style="margin:0px;">
+        <div id="fake">
+            <div id="c1" class="content-box">  <!-- cX indicates the Xth panel -->
+                <div class="inner">
+				    <div class="demo">
+
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">KNOW TECHNEX</a></li>      
+                            </ul>
+                            <div id="tabs-1">
+                                    <p>Technex is the annual technical festival of Institute of Technology, Banaras Hindu 
+                                    University, Varanasi, India. The festival hosts a variety of events targeting the 
+                                    improvement in technical and innovative thinking of the students. Various competitions
+                                    for students to test out their wits, lectures which nourish the young minds with knowledge 
+                                    and experience of intellectual and experienced guests, and workshops 
+                                    to learn and improve skills are part of this prestigious technical festival of IT-BHU.<p>
+                            </div>                              
+                        </div>
+                    </div><!-- End demo -->		
+                </div>
+            </div>
+                
+            <div id="c2" class="content-box"> <!-- c2 is the 2nd panel -->
+                <div class="inner">
+                    <div class="demo">
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">SPONSORS...</a></li>             
+                            </ul>
+                                
+                            <div id="tabs-1">
+                                    <div style="position:relative;width:100%;top:80px">
+                                       <BR> SPONSOR1 </BR>
+                                       <BR>SPONSOR2 </BR>       
+                                    </div>
+                            </div>                                
+                        </div>
+                    </div><!-- End demo -->             
+				</div>
+            </div>
+
+		    <div id="c3" class="content-box"> <!-- 3rd panel : Regsitration Form Panel -->
+		        <div class="inner">
+                    <div class="demo">
+                    
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">REGISTRATION...</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                <div>
+                                {% block formcontent %}
+                                    {% if not registration_successful %}
+                                      <form action="." method="post">
+                                        {% csrf_token %}
+                                        {% for field in form %}
+                                            <div class="fieldWrapper">
+                                            {{ field.label_tag }}: {{ field }} {{ field.errors }}
+                                            </div>
+                                        {% endfor %}
+                                        <input type="submit" value="Submit" />                                       
+                                        </form>
+                                    {% else %}
+                                        CONGRATULATIONS! YOU HAVE BEEN REGISTERED FOR TECHNEX 2012
+                                    {% endif %}
+                                {% endblock %}
+                            </div>                      
+                            </div>
+                        </div>
+                    </div><!-- End demo -->
+                </div>
+            </div>   
+
+	        <div id="c4" class="content-box">
+	            <div class="inner">
+                    <div class="demo">
+                        <div id="tabs"> 
+                            <ul>
+                                <li><a href="#tabs-1">GENERAL NOTIFICATIONS</a></li>
+                                <li><a href="#tabs-2">MY PAGE</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                {% block notificationcontent %}
+                                        <BR></BR>
+                                        {% if general_notifs %}
+                                            <ol>
+                                                {% for g_notif in general_notifs %}
+                                                    <li>  {{ g_notif.title }} : {{ g_notif.body }} </li>
+                                                {% endfor %}
+                                            </ol>
+                                        {% else %}
+                                            THERE ARE NO NEW NOTIFICATIONS!
+                                        {% endif %}
+                                {% endblock %} 
+                            </div>
+                            <div id="tabs-2">  
+                                 {% if user.is_authenticated %}
+                                    <p>Welcome, {{ user.username }}. </p>
+                                    {% else %}
+                                    <p>Welcome GUEST!, You must be logged in to view this page. </p>
+                                {% endif %}                    
+                            </div>                   
+                        </div>
+                    </div><!-- End demo -->
+                </div> <!--End inner -->
+            </div>
+                
+            <div id="c5" class="content-box">
+                <!-- div#c5 Content Loaded through AJAX everytime on click on Events Icon -->
+                <div class="inner">	
+                    <div class="demo">
+                        <div id="tabs">                                
+                            <ul>
+                                <li><a href="#tabs-1">------EVENTS-------</a></li>
+                                <li><a href="#tabs-2">TECHNICAL EVENTS</a></li>
+                                <li><a href="#tabs-3">MANAGEMENT EVENTS</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                <p>WE HAVE BASICALLY TWO CATEGORIES OF EVENTS</p>
+                                <p>1.TECHNICAL</p>
+                                <p>2. MANAGEMENT</p>
+                                <p>   EXPERIENCE THE HEAT OF THE HOT EVENTS AT TECHNEX 2012</p>
+                            </div>
+                            <div id="tabs-2">
+                                <ul id="tech_event" style="position:relative;left:20%;top:-20px">
+                                    <li title="WORKSHOPS" id="spr_workshop" alt="Workshops" onClick="ajaxrequest_event('workshops');"></li>
+                                    <li title="ROBOTRIX" id="spr_rotrix" onClick="ajaxrequest_event('robotics');"></li>
+                                    <li title="MODEX" id="spr_modex" onClick="ajaxrequest_event('modex');"></li>
+                                    <li title="CODEFEST" id="spr_codefest" onClick="ajaxrequest_event('codefest');"></li>
+                                    <li title="EXTREME ENGINEERING" id="spr_extreme" onClick="ajaxrequest_event('extreme_engg');"></li>
+                                </ul>
+                                <div id="child_con">
+                                    TECHNICAL EVENTS ARE VERY NICE
+                                </div>
+                            </div>
+                            <div id="tabs-3">
+                                <ul id="mang_event"style="position:relative;left:20%;top:-20px">
+                                    <li title="INNOVENTURE" id="spr_innoventure" onClick="ajaxrequest_event('innoventure');"></li>
+                                    <li title="KRACKAT" id="spr_krackat" onClick="ajaxrequest_event('krackat');"></li>
+                                    <li title="VENTURA" id="spr_venture" onClick="ajaxrequest_event('ventura');"></li>
+                                    <li title="MANTHAN" id="spr_manthan" onClick="ajaxrequest_event('manthan');"></li>
+                                    <li title="THOUGHTZ"id="spr_thoughtz" onClick="ajaxrequest_event('thoughtz');"></li>
+                                </ul>
+                                <div id="child_con">
+                                    MANAGEMENT EVENTS ARE ALSO VERY NICE
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End demo -->						
+                </div>
+            </div>
+                
+            <div id="c6" class="content-box">
+			    <div class="inner">
+                    <div class="demo">
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">GUEST LECTURES </a></li>
+                                <li><a href="#tabs-2">WORKSHOPS...</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                <p font="24pt">THIS YEAR WE ARE PLANNING TO NOT HAVE GUEST LECTURES</p>
+                            </div>
+                            <div id="tabs-2">
+                                <p>DONT WORRY .....THERE WILL BE WORKSHOPS</p>
+                            </div>
+                        </div>
+                    </div><!-- End demo -->
+                </div>
+            </div>
+                
+            <div id="c7" class="content-box">
+                <div class="inner">
+                    <div class="demo">
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">HOSPITALITY</a></li>
+                                <li><a href="#tabs-2">CONTACTS...</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                <p>IT-BHU PROVIDES BOARDING & LODGING FACILITIES TO ALL PARTICIPANTS</p>
+                            </div>
+                            <div id="tabs-2">
+                                <p>FEEL FREE TO CONTACT US ON ANY OF OUR NUMBERS.....</p>
+                            </div>
+                        </div>
+                    </div><!-- End demo -->
+                </div>
+            </div>
+				
+        </div><!-- div id="fake" -->
+    </div><!-- div id="wrapper" -->
+        
+{% endblock %}
