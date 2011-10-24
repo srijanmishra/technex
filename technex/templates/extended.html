@@ -18,19 +18,19 @@
 
 	<script type="text/javascript">
        $(document).ready(function(){
-            $("#in").delay(1000).animate({marginTop:"105px"},"slow");
-            $("#out").mouseenter(function(){
-            $("#in").animate({marginTop:"0px"});
-            });
-            $("#out").mouseleave(function(){
-            $("#in").delay(1000).animate({marginTop:"105px"});
-            });  
             $(function() {
             $( "div#tabs" ).tabs();
             });
             {% if registration_successful %}
                 panelswitch(2,50);
             {% endif %}
+            $(window).keyup(function (event){
+            	if (event.keyCode == 37){
+            		panelswitch(currpanelind() - 1 , 1);
+            	} else if (event.keyCode == 39 && currpanelind() < 6 ){
+            	 	panelswitch(currpanelind() + 1 , 1);
+            	}
+            });
             });    
 		
 	    function geteventinfo(){
