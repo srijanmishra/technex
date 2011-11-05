@@ -20,30 +20,30 @@
        $(document).ready(function(){
             $("#in").delay(1000).animate({marginTop:"105px"},"slow");
             $("#out").mouseenter(function(){
-            $("#in").animate({marginTop:"0px"});
+                $("#in").animate({marginTop:"0px"});
             });
             $("#out").mouseleave(function(){
-            $("#in").delay(1000).animate({marginTop:"105px"});
+                $("#in").delay(1000).animate({marginTop:"105px"});
             });  
             $(function() {
-            $( "div#tabs" ).tabs();
+                $( "div#tabs" ).tabs();
             });
             {% if registration_successful %}
                 panelswitch(2,50);
             {% endif %}
-            });    
+        });    
 		
 	    function geteventinfo(){
 	        $.ajax({
-            url: "/eventspanel/",
-            dataType: "html",   
-            async: true,
-            success: function(response){
-                $("div#c5").html(response);
-                panelswitch(4,50);
-            }
+                url: "/eventspanel/",
+                dataType: "html",   
+                async: true,
+                success: function(response){
+                    $("div#c5").html(response);
+                    panelswitch(4,50);
+                }
             });
-	        };
+        };
     </script>
 
     <script type="text/javascript">
@@ -82,22 +82,21 @@
                 dataType: "html",
                 async: true,
                 success: function(response4){
-                            {% if user.is_authenticated %}
-                                global: mypage_obj = $.parseJSON(response4);
-                                event_notif_objects = mypage_obj.event_notifications;
-                                $("div#c4 div#tabs-2").html('');
-                                for (i=0 ; event_notif_objects[i] != undefined ; i++) {
-                                    $("div#c4 div#tabs-2").append(event_notif_objects[i].title + " : ");                    
-                                    $("div#c4 div#tabs-2").append(event_notif_objects[i].body);
-                                    $("div#c4 div#tabs-2").append('<BR></BR>');
-                                }
-                            panelswitch(3,50);
-                            {% else %}
-                                document.location = "/accounts/login";
-                            {% endif %}                              
+                    {% if user.is_authenticated %}
+                        global: mypage_obj = $.parseJSON(response4);
+                        event_notif_objects = mypage_obj.event_notifications;
+                        $("div#c4 div#tabs-2").html('');
+                        for (i=0 ; event_notif_objects[i] != undefined ; i++) {
+                            $("div#c4 div#tabs-2").append(event_notif_objects[i].title + " : ");                    
+                            $("div#c4 div#tabs-2").append(event_notif_objects[i].body);
+                            $("div#c4 div#tabs-2").append('<BR></BR>');
+                        }
+                        panelswitch(3,50);
+                    {% else %}
+                        document.location = "/accounts/login";
+                    {% endif %}                              
                 }
             });
-
 	    };
     </script>
 
