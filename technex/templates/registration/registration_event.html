@@ -1,4 +1,11 @@
 <form action="/event_registration/" method="post">
+	<script type="text/javascript">
+		$("document").ready(function(){
+		$("#in").hide();
+		$(".home").attr('onClick',"window.location = '/'");
+		$(".back").attr('onClick','javascript:history.go(-1)');
+		});
+	</script>
     {% csrf_token %}
     {% for field in form %}
         <div class="fieldWrapper">
