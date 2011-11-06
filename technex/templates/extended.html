@@ -18,21 +18,21 @@
 
 	<script type="text/javascript">
        $(document).ready(function(){
-            $("#in").delay(1000).animate({marginTop:"105px"},"slow");
-            $("#out").mouseenter(function(){
-                $("#in").animate({marginTop:"0px"});
-            });
-            $("#out").mouseleave(function(){
-                $("#in").delay(1000).animate({marginTop:"105px"});
-            });  
             $(function() {
                 $( "div#tabs" ).tabs();
             });
             {% if registration_successful %}
                 panelswitch(2,50);
             {% endif %}
+            $(window).keyup(function (event){
+            	if (event.keyCode == 37){
+            		panelswitch(currpanelind() - 1 , 1);
+            	} else if (event.keyCode == 39 && currpanelind() < 6 ){
+            	 	panelswitch(currpanelind() + 1 , 1);
+            	}
+            });
+            });    
         });    
-		
 	    function geteventinfo(){
 	        $.ajax({
                 url: "/eventspanel/",
@@ -126,8 +126,8 @@
     {% block subcontent_dock %}
 	    <div id="out">
             <div style="float:left;margin-top:55px">
-            <img src="{{ STATIC_URL }}pics/but1.png" style="height:45px;width:65px;" title="Back" onClick="panelswitch(currpanelind() - 1 , 1);"/>&nbsp;
-            <img src="{{ STATIC_URL }}pics/but2.png" style="height:45px;width:65px;" onClick="panelswitch(0,1);"title="Home"/>
+            <img src="{{ STATIC_URL }}pics/but1.png" class="back" style="height:45px;width:65px;" title="Back" onClick="panelswitch(currpanelind() - 1 , 1);"/>&nbsp;
+            <img src="{{ STATIC_URL }}pics/but2.png" class="home" style="height:45px;width:65px;" onClick="panelswitch(0,1);"title="Home"/>
             </div>
             <!--TIMER-->
             <div id="timer" style="font:14pt Arial;color:#63718c;position:absolute;margin-top:55px;margin-left:95%;height:55px;width:150px;">

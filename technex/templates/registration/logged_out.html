@@ -1,6 +1,13 @@
 {% extends 'extended.html' %}
 
 {% block content %}
+	<script type="text/javascript">
+		$("document").ready(function(){
+		$("#in").hide();
+		$(".home").attr('onClick',"window.location = '/'");
+		$(".back").attr('onClick','javascript:history.go(-1)');
+		});
+	</script>
     You have successfully logged out.
 	<script type="text/javascript">
 		document.location='/';

@@ -3,7 +3,14 @@
 
 {% block subcontent_login %}
     
-        <div id="fake">
+        <script type="text/javascript">
+		$("document").ready(function(){
+		$("#in").hide();
+		$(".home").attr('onClick',"window.location = '/'");
+		$(".back").attr('onClick','javascript:history.go(-1)');
+		});
+		</script>
+		<div id="fake">
             <div id="c1" class="content-box">
                 <div class="inner">
 				    <div class="demo">
