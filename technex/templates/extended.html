@@ -22,7 +22,7 @@
                 $( "div#tabs" ).tabs();
             });
             {% if registration_successful %}
-                panelswitch(2,50);
+                panelswitch(3,50);
             {% endif %}
             $(window).keyup(function (event){
             	if (event.keyCode == 37){
@@ -31,7 +31,6 @@
             	 	panelswitch(currpanelind() + 1 , 1);
             	}
             });
-            });    
         });    
 	    function geteventinfo(){
 	        $.ajax({
@@ -39,8 +38,8 @@
                 dataType: "html",   
                 async: true,
                 success: function(response){
-                    $("div#c5").html(response);
-                    panelswitch(4,50);
+                    $("div#c2").html(response);
+                    panelswitch(1,50);
                 }
             });
         };
@@ -63,7 +62,7 @@
                         dataType: "html",   
                         async: true,
                         success: function(response3){
-                            $("div#c5").html(response3);
+                            $("div#c2").html(response3);
                         }
                     });
                 }
@@ -119,28 +118,28 @@
         <script type="text/javascript" src="{{ STATIC_URL }}js/iphone.js"></script>
             <script type="text/javascript">
                 {% if error %}
-                    panelswitch(2,50)
+                    panelswitch(4,50)
                 {% endif %}
             </script>
 
     {% block subcontent_dock %}
 	    <div id="out">
-            <div style="float:left;margin-top:55px">
+            <div style="float:left;margin-top:40px">
             <img src="{{ STATIC_URL }}pics/but1.png" class="back" style="height:45px;width:65px;" title="Back" onClick="panelswitch(currpanelind() - 1 , 1);"/>&nbsp;
             <img src="{{ STATIC_URL }}pics/but2.png" class="home" style="height:45px;width:65px;" onClick="panelswitch(0,1);"title="Home"/>
             </div>
             <!--TIMER-->
-            <div id="timer" style="font:14pt Arial;color:#63718c;position:absolute;margin-top:55px;margin-left:95%;height:55px;width:150px;">
+            <div id="timer" style="font:14pt Arial;color:#63718c;position:absolute;margin-top:55px;margin-left:100%;height:55px;width:150px;">
             </div>
 
             <div id="in">
                 <ul id="navlist">
-                    <li title="SPONSORS" id="spon" onClick="panelswitch(1,50)"></li>
-                    <li title="REGISTER ME @ TECHNEX 2012" id="reg" onClick="panelswitch(2,50)"></li>
-                    <li title="MYPAGE" id="mypage" onClick="ajaxrequest_mypage();"></li>
                     <li title="EXPERIENCE THE HEAT OF THE HOT EVENTS" id="event" onClick="geteventinfo();"></li>
-                    <li title="LECTURE SERIES:GET READY TO BE ENLIGHTENED" id="guest" onClick="panelswitch(5,50)"></li>
-                    <li title="CONTACT US" id="con" onclick="panelswitch(6,50)"></li>
+                    <li title="LECTURE SERIES:GET READY TO BE ENLIGHTENED" id="guest" onClick="panelswitch(2,50)"></li>
+                    <li title="MYPAGE" id="mypage" onClick="ajaxrequest_mypage();"></li>
+                    <li title="REGISTER ME @ TECHNEX 2012" id="reg" onClick="panelswitch(4,50)"></li>
+                    <li title="CONTACT US" id="con" onclick="panelswitch(5,50)"></li>
+                    <li title="SPONSORS" id="spon" onClick="panelswitch(6,50)"></li>
                 </ul>
             </div>
         </div>
