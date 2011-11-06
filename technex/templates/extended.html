@@ -18,16 +18,12 @@
 
 	<script type="text/javascript">
        $(document).ready(function(){
-<<<<<<< HEAD
-=======
->>>>>>> kushagra_technex/master
             $(function() {
                 $( "div#tabs" ).tabs();
             });
             {% if registration_successful %}
                 panelswitch(2,50);
             {% endif %}
-<<<<<<< HEAD
             $(window).keyup(function (event){
             	if (event.keyCode == 37){
             		panelswitch(currpanelind() - 1 , 1);
@@ -36,10 +32,7 @@
             	}
             });
             });    
-=======
         });    
->>>>>>> kushagra_technex/master
-		
 	    function geteventinfo(){
 	        $.ajax({
                 url: "/eventspanel/",
