@@ -32,93 +32,8 @@
                 </div>
             </div>
                 
-            <div id="c2" class="content-box"> <!-- c2 is the 2nd panel -->
-                <div class="inner">
-                    <div class="demo">
-                        <div id="tabs">
-                            <ul>
-                                <li><a href="#tabs-1">SPONSORS...</a></li>             
-                            </ul>
-                                
-                            <div id="tabs-1">
-                                    <div style="position:relative;width:100%;top:80px">
-                                       <BR> SPONSOR1 </BR>
-                                       <BR>SPONSOR2 </BR>       
-                                    </div>
-                            </div>                                
-                        </div>
-                    </div><!-- End demo -->             
-				</div>
-            </div>
-
-		    <div id="c3" class="content-box"> <!-- 3rd panel : Regsitration Form Panel -->
-		        <div class="inner">
-                    <div class="demo">
-                    
-                        <div id="tabs">
-                            <ul>
-                                <li><a href="#tabs-1">REGISTRATION...</a></li>
-                            </ul>
-                            <div id="tabs-1">
-                                <div>
-                                {% block formcontent %}
-                                    {% if not registration_successful %}
-                                      <form action="." method="post">
-                                        {% csrf_token %}
-                                        {% for field in form %}
-                                            <div class="fieldWrapper">
-                                            {{ field.label_tag }}: {{ field }} {{ field.errors }}
-                                            </div>
-                                        {% endfor %}
-                                        <input type="submit" value="Submit" />                                       
-                                        </form>
-                                    {% else %}
-                                        CONGRATULATIONS! YOU HAVE BEEN REGISTERED FOR TECHNEX 2012
-                                    {% endif %}
-                                {% endblock %}
-                            </div>                      
-                            </div>
-                        </div>
-                    </div><!-- End demo -->
-                </div>
-            </div>   
-
-	        <div id="c4" class="content-box">
-	            <div class="inner">
-                    <div class="demo">
-                        <div id="tabs"> 
-                            <ul>
-                                <li><a href="#tabs-1">GENERAL NOTIFICATIONS</a></li>
-                                <li><a href="#tabs-2">MY PAGE</a></li>
-                            </ul>
-                            <div id="tabs-1">
-                                {% block notificationcontent %}
-                                        <BR></BR>
-                                        {% if general_notifs %}
-                                            <ol>
-                                                {% for g_notif in general_notifs %}
-                                                    <li>  {{ g_notif.title }} : {{ g_notif.body }} </li>
-                                                {% endfor %}
-                                            </ol>
-                                        {% else %}
-                                            THERE ARE NO NEW NOTIFICATIONS!
-                                        {% endif %}
-                                {% endblock %} 
-                            </div>
-                            <div id="tabs-2">  
-                                 {% if user.is_authenticated %}
-                                    <p>Welcome, {{ user.username }}. </p>
-                                    {% else %}
-                                    <p>Welcome GUEST!, You must be logged in to view this page. </p>
-                                {% endif %}                    
-                            </div>                   
-                        </div>
-                    </div><!-- End demo -->
-                </div> <!--End inner -->
-            </div>
-                
-            <div id="c5" class="content-box">
-                <!-- div#c5 Content Loaded through AJAX everytime on click on Events Icon -->
+            <div id="c2" class="content-box">
+                <!-- div#c2 Content Loaded through AJAX everytime on click on Events Icon -->
                 <div class="inner">	
                     <div class="demo">
                         <div id="tabs">                                
@@ -161,8 +76,8 @@
                     </div><!-- End demo -->						
                 </div>
             </div>
-                
-            <div id="c6" class="content-box">
+
+		    <div id="c3" class="content-box">
 			    <div class="inner">
                     <div class="demo">
                         <div id="tabs">
@@ -180,8 +95,74 @@
                     </div><!-- End demo -->
                 </div>
             </div>
+
+	        <div id="c4" class="content-box">
+	            <div class="inner">
+                    <div class="demo">
+                        <div id="tabs"> 
+                            <ul>
+                                <li><a href="#tabs-1">GENERAL NOTIFICATIONS</a></li>
+                                <li><a href="#tabs-2">MY PAGE</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                {% block notificationcontent %}
+                                        <BR></BR>
+                                        {% if general_notifs %}
+                                            <ol>
+                                                {% for g_notif in general_notifs %}
+                                                    <li>  {{ g_notif.title }} : {{ g_notif.body }} </li>
+                                                {% endfor %}
+                                            </ol>
+                                        {% else %}
+                                            THERE ARE NO NEW NOTIFICATIONS!
+                                        {% endif %}
+                                {% endblock %} 
+                            </div>
+                            <div id="tabs-2">  
+                                 {% if user.is_authenticated %}
+                                    <p>Welcome, {{ user.username }}. </p>
+                                    {% else %}
+                                    <p>Welcome GUEST!, You must be logged in to view this page. </p>
+                                {% endif %}                    
+                            </div>                   
+                        </div>
+                    </div><!-- End demo -->
+                </div> <!--End inner -->
+            </div>
                 
-            <div id="c7" class="content-box">
+            <div id="c5" class="content-box"> <!-- 5rd panel : Regsitration Form Panel -->
+		        <div class="inner">
+                    <div class="demo">
+                    
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">REGISTRATION...</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                <div>
+                                {% block formcontent %}
+                                    {% if not registration_successful %}
+                                      <form action="." method="post">
+                                        {% csrf_token %}
+                                        {% for field in form %}
+                                            <div class="fieldWrapper">
+                                            {{ field.label_tag }}: {{ field }} {{ field.errors }}
+                                            </div>
+                                        {% endfor %}
+                                        <input type="submit" value="Submit" />                                       
+                                        </form>
+                                    {% else %}
+                                        CONGRATULATIONS! YOU HAVE BEEN REGISTERED FOR TECHNEX 2012
+                                    {% endif %}
+                                {% endblock %}
+                            </div>                      
+                            </div>
+                        </div>
+                    </div><!-- End demo -->
+                </div>
+            </div>
+                
+            <div id="c6" class="content-box">
                 <div class="inner">
                     <div class="demo">
                         <div id="tabs">
@@ -198,6 +179,25 @@
                         </div>
                     </div><!-- End demo -->
                 </div>
+            </div>
+            
+            <div id="c7" class="content-box"> <!-- c7 is the 7th panel -->
+                <div class="inner">
+                    <div class="demo">
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">SPONSORS...</a></li>             
+                            </ul>
+                                
+                            <div id="tabs-1">
+                                    <div style="position:relative;width:100%;top:80px">
+                                       <BR> SPONSOR1 </BR>
+                                       <BR>SPONSOR2 </BR>       
+                                    </div>
+                            </div>                                
+                        </div>
+                    </div><!-- End demo -->             
+				</div>
             </div>
 				
         </div><!-- div id="fake" -->
