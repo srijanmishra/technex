@@ -66,7 +66,7 @@
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 0 solid #666666; background: #000000 url('../pics/csspic/ui-bg_glass_20_555555_1x400.png') 50% 50% repeat-x; font-weight: bold; color: #eeeee; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 0 solid #666666; font-weight: bold; color: #eeeee; }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #aaaaaa; text-decoration: none; }
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {padding-bottom: 0; border: 0px solid #666666; background: #000000; font-weight: bold; color: #ffffff; }
 .ui-state-hover a, .ui-state-hover a:hover { color: #6395f7; text-decoration: none; }
@@ -233,25 +233,21 @@ margin-top:0px;
 #tech_event li{margin:0;padding:0;list-style:none;position:absolute;top:0;margin-left:3%;}
 #tech_event li, #tech_event a{height:95px;display:block;}
 
-#spr_workshop{left:0px;width:112px;}
-#spr_workshop{background:url('../pics/sprite.png') 0 0;}
-#spr_workshop a:hover{background: url('../pics/sprite.png') 0 -95px;}
+#spr_rotrix{left:160px;width:100px;}
+#spr_rotrix{background:url('../pics/sprite1.png') -120px 0;}
+/*#spr_rotrix a:hover{background: url('../pics/sprite1.png') 0 -95px;}*/
 
-#spr_rotrix{left:113px;width:112px;}
-#spr_rotrix{background:url('../pics/sprite.png') -112px 0;}
-#spr_rotrix a:hover{background: url('../pics/sprite.png') -113px -95px;}
+#spr_modex{left:260px;width:100px;}
+#spr_modex{background:url('../pics/sprite1.png') -230px 0;}
+/*#spr_modex a:hover{background: url('../pics/sprite1.png') -113px -95px;}*/
 
-#spr_modex{left:226px;width:112px;}
-#spr_modex{background:url('../pics/sprite.png') -224px 0;}
-#spr_modex a:hover{background: url('../pics/sprite.png') -224px -95px;}
+#spr_extreme{left:360px;width:100px;}
+#spr_extreme{background:url('../pics/sprite1.png') -350px 0;}
+/*#spr_extreme a:hover{background: url('../pics/sprite1.png') -224px -95px;}*/
 
-#spr_codefest{left:339px;width:112px;}
-#spr_codefest{background:url('../pics/sprite.png') -337px 0;}
-#spr_codefest a:hover{background: url('../pics/sprite.png') -336px -95px;}
-
-#spr_extreme{left:452px;width:97px;}
-#spr_extreme{background:url('../pics/sprite.png') -447px 0;}
-#spr_extreme a:hover{background: url('../pics/sprite.png') -446px -95px;}
+#spr_balvigyan{left:440px;width:100px;}
+#spr_balvigyan{background:url('../pics/sprite1.png') -440px 0;}
+/*#spr_balvigyan a:hover{background: url('../pics/sprite1.png') -336px -95px;}*/
 
 
 
@@ -261,25 +257,21 @@ margin-top:0px;
 #mang_event li{margin:0;padding:0;list-style:none;position:absolute;top:0;margin-left:3%;}
 #mang_event li, #mang_event a{height:95px;display:block;}
 
-#spr_innoventure{left:0px;width:112px;}
-#spr_innoventure{background:url('../pics/sprite.png') 0 0;}
-#spr_innoventure a:hover{background: url('../pics/sprite.png') 0 -95px;}
+#spr_manthan{left:160px;width:100px;}
+#spr_manthan{background:url('../pics/sprite2.png') -120px 0;}
+/*#spr_rotrix a:hover{background: url('../pics/sprite2.png') 0 -95px;}*/
 
-#spr_krackat{left:113px;width:112px;}
-#spr_krackat{background:url('../pics/sprite.png') -112px 0;}
-#spr_krackat a:hover{background: url('../pics/sprite.png') -113px -95px;}
+#spr_brandaid{left:260px;width:100px;}
+#spr_brandaid{background:url('../pics/sprite2.png') -230px 0;}
+/*#spr_modex a:hover{background: url('../pics/sprite2.png') -113px -95px;}*/
 
-#spr_venture{left:226px;width:112px;}
-#spr_venture{background:url('../pics/sprite.png') -224px 0;}
-#spr_venture a:hover{background: url('../pics/sprite.png') -224px -95px;}
+#spr_ventura{left:360px;width:100px;}
+#spr_ventura{background:url('../pics/sprite2.png') -350px 0;}
+/*#spr_extreme a:hover{background: url('../pics/sprite2.png') -224px -95px;}*/
 
-#spr_manthan{left:339px;width:112px;}
-#spr_manthan{background:url('../pics/sprite.png') -337px 0;}
-#spr_manthan a:hover{background: url('../pics/sprite.png') -336px -95px;}
-
-#spr_thoughtz{left:452px;width:97px;}
-#spr_thoughtz{background:url('../pics/sprite.png') -447px 0;}
-#spr_thoughtz a:hover{background: url('../pics/sprite.png') -446px -95px;}
+#spr_bizwiz{left:440px;width:100px;}
+#spr_bizwiz{background:url('../pics/sprite2.png') -440px 0;}
+/*#spr_balvigyan a:hover{background: url('../pics/sprite2.png') -336px -95px;}*/
 
 
 
