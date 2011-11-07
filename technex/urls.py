@@ -36,4 +36,5 @@ urlpatterns = patterns('',
     url(r'^accounts/password/reset/done/$', password_reset_done),
     url(r'^accounts/password/change/$', password_change),
     url(r'^accounts/password/change/done/$', password_change_done),
+    url(r'^return_children/$' , views.return_children)
 )
