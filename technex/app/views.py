@@ -165,3 +165,12 @@ def my_page(request):
     eventnotif_dict = {'event_notifications' : eventnotif_list }
     data = dumps(eventnotif_dict)
     return HttpResponse(data, content_type="application/json")
+
+def return_children(request):
+    event = request.GET.get('event_name')
+    children = []
+    for child in Event.objects.all():
+        if child.parent_event == event:
+            children.append(child)
+    data = dumps(children)
+    return HttpResponse(data, content_type="application/json")
