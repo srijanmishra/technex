@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 #from django.contrib.auth import logout
 from django.forms import ModelForm, CheckboxSelectMultiple
 from django.forms.widgets import *
@@ -136,7 +137,7 @@ def serialize_to_json(request):
 def my_page(request):
     #Selecting the event_notification queryset relating to the currently logged in user. 
     #(on the basis of the events he has registered for)
-    user = UserProfile.objects.get(name = request.user)
+    user = UserProfile.objects.get(username = request.user)
     team_set = user.team_set.all()
     eventnotif_set = None
     for team in team_set:
@@ -146,7 +147,7 @@ def my_page(request):
     
     # At this point if there are no event notifications for the 'user' then eventnotif_set is None
     eventnotif_list = []
-    if eventnotif_set != None :
+    if eventnotif_set != None:
         eventnotif_set = eventnotif_set.distinct()
 
         #Converting  the eventnotif_set queryset object to a JSON response
@@ -157,10 +158,7 @@ def my_page(request):
                                     'body': eventnotif_set[i].body
                                 }]
     else:
-        eventnotif_list +=[{ 
-                                'title' : 'NOTIFICATIONS EMPTY ',
-                                'body': 'HEY! YOU DO NOT HAVE ANY NOTIFICATIONS SPECIFIC TO THE EVENTS YOU HAVE REGISTERED FOR'
-                           }]
+        eventnotif_list = []
 
     eventnotif_dict = {'event_notifications' : eventnotif_list }
     data = dumps(eventnotif_dict)
