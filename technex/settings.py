@@ -4,7 +4,7 @@ import os.path
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -66,6 +66,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, '../../technex_static/static/')
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = 'http://static.technex.in/'
+#STATIC_URL = '/static/'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
