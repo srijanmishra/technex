@@ -67,8 +67,19 @@
                     });
                 }
             });
-
-	    };
+		}
+		
+		function robotrix(){
+			var str = '<div class="inner"><div class="demo"><div class="robotrix" id="tabs"><ul><li><a href="#tabs-1">ROBOTRIX</a></li></ul><div id="tabs-1"><ul id="robotics" style="position:relative;left:20%;top:-20px"><li title="ROBOWARS" id="spr_robowars" onClick="ajaxrequest_event(\'Robowars\');"></li><li title="I-ROBOT" id="spr_irobot" onClick="ajaxrequest_event(\'I-Robot\');"></li><li title="OPTIKA" id="spr_optika" onClick="ajaxrequest_event(\'Optika\');"></li><li title="DASH N TROUNCE" id="spr_dnt" onClick="ajaxrequest_event(\'Dash n Trounce\');"></li></ul><div id="child_con">Details to be uploaded very soon. Keep an eye out for this space.</div></div></div></div><!-- End demo --></div>'
+			$('#c2').html(str);
+			$('.robotrix').tabs();
+		}
+		
+		function xtrmengg(){
+			var str = '<div class="inner"><div class="demo"><div class="xtrmengg" id="tabs"><ul><li><a href="#tabs-1">XTREME ENGINEERING</a></li></ul><div id="tabs-1"><ul id="extreme_engg" style="position:relative;left:20%;top:-20px"><li title="GOLDBERG\'S ALLEY" id="spr_gldbrg" onClick="ajaxrequest_event(\'Goldbergs Alley\');"></li><!--<li title="I-ROBOT" id="spr_irobot" onClick="ajaxrequest_event(\'I-Robot\');"></li><li title="OPTIKA" id="spr_optika" onClick="ajaxrequest_event(\'Optika\');"></li><li title="DASH N TROUNCE" id="spr_dnt" onClick="ajaxrequest_event(\'Dash n Trounce\');"></li>--></ul><div id="child_con">Details to be uploaded very soon. Keep an eye out for this space.</div></div></div></div><!-- End demo --></div>'
+			$('#c2').html(str);
+			$('.xtrmengg').tabs();
+		}
 
     </script>
 
