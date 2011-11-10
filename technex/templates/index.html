@@ -3,7 +3,7 @@
 {% block subcontent_panels %}   
 
     {% if user.is_authenticated %}
-	<p style="float:left;right:150px;top:30px;position:absolute;color:#0078a3;"><i>Welcome,   {{user.username}}</i></p>
+	<p style="float:left;right:150px;top:30px;position:absolute;color:#0078a3;"><i>Welcome, {{user.username}}</i></p>
 	<a href="/accounts/logout/"><input type="button" value="Logout"style="color:#fff;float:left;right:20px;top:20px;position:absolute;padding:2px 20px;border-color:#0078a3;border-radius:5px;background-color:#0078a3;"/></a>
     {% else %}
     <a href="/accounts/login/"><input type="button" value="Login"style="color:#fff;float:left;right:20px;top:20px;position:absolute;padding:2px 20px;border-color:#0078a3;border-radius:5px;background-color:#0078a3;"/></a>
@@ -20,7 +20,7 @@
                                 <li><a href="#tabs-1">KNOW TECHNEX</a></li>      
                             </ul>
                             <div id="tabs-1">
-                                    <p style="line-height: 4em;font-size: large;">Technex is the annual technical festival of Institute of Technology, Banaras Hindu 
+                                    <p style="line-height: 2em;font-size: 0.9em;">Technex is the annual technical festival of Institute of Technology, Banaras Hindu 
                                     University, Varanasi, India. The festival hosts a variety of events targeting the 
                                     improvement in technical and innovative thinking of the students. Various competitions
                                     for students to test out their wits, lectures which nourish the young minds with knowledge 
@@ -41,26 +41,38 @@
                                 <li><a href="#tabs-1">TECHNICAL EVENTS</a></li>
                                 <li><a href="#tabs-2">MANAGEMENT EVENTS</a></li>
                             </ul>
-                            <div id="tabs-1">
+                            <div id="tabs-1" class="parent_event">
                                 <ul id="tech_event" style="position:relative;left:20%;top:-20px">
                                     <li title="ROBOTRIX" id="spr_rotrix" onClick="robotrix();"></li>
-                  					<li title="MODEX" id="spr_modex" onClick="ajaxrequest_event('Modex');"></li>
-                    				<li title="XTREME ENGINEERING" id="spr_extreme" onClick="xtrmengg();"></li>
-                    				<li title="BALVIGYAN" id="spr_balvigyan" onClick="ajaxrequest_event('Balvigyan');"></li>
+                                    <li title="MODEX" id="spr_modex" onClick="ajaxrequest_event('Modex');"></li>
+                                    <li title="XTREME ENGINEERING" id="spr_extreme" onClick="xtrmengg();"></li>
+                                    <li title="BALVIGYAN" id="spr_balvigyan" onClick="ajaxrequest_event('Balvigyan');"></li>
                                 </ul>
-                                <div id="child_con">
-                                    Details to be uploaded very soon. Keep an eye out for this space.
+                                <div style="font-size:0.9em;" id="child_con">
+                                    Following are the main categories of technical events under Technex 2012:
+                                    <ul style="margin-top:10px;">
+                                        <li onClick="robotrix();" style="font-size:1em;"><span style="text-decoration:underline;">Robotrix:</span> Robotix tests the ability of students to automate processes of varying degree of complexity</li>
+                                        <li onClick="ajaxrequest_event('Modex');" style="font-size:1em;"><span style="text-decoration:underline;">Modex:</span> The model making competition</li>
+                                        <li onClick="xtrmengg();" style="font-size:1em;"><span style="text-decoration:underline;">Xtreme Engineering:</span> Reaching the pinnacles of Engineering</li>
+                                        <li onClick="ajaxrequest_event('Balvigyan');" style="font-size:1em;"><span style="text-decoration:underline;">Balvigyaan:</span> Competitions for school students</li>
+                                    </ul>
                                 </div>
                             </div>
                             <div id="tabs-2">
                                 <ul id="mang_event"style="position:relative;left:20%;top:-20px">
                                     <li title="MANTHAN" id="spr_manthan" onClick="ajaxrequest_event('Manthan');"></li>
-                    				<li title="BRANDAID" id="spr_brandaid" onClick="ajaxrequest_event('Brandaid');"></li>
-                    				<li title="VENTURA" id="spr_ventura" onClick="ajaxrequest_event('Ventura');"></li>
-                    				<li title="BIZWIZ" id="spr_bizwiz" onClick="ajaxrequest_event('Biz-Wiz');"></li>
+                                    <li title="BRANDAID" id="spr_brandaid" onClick="ajaxrequest_event('Brandaid');"></li>
+                                    <li title="VENTURA" id="spr_ventura" onClick="ajaxrequest_event('Ventura');"></li>
+                                    <li title="BIZWIZ" id="spr_bizwiz" onClick="ajaxrequest_event('Biz-Wiz');"></li>
                                 </ul>
-                                <div id="child_con">
-                                    Details to be uploaded very soon. Keep an eye out for this space.
+                                <div style="font-size:0.9em;" id="child_con">
+                                    Following are the main categories of management events under Technex 2012:
+                                    <ul style="margin-top:10px;">
+                                        <li onClick="ajaxrequest_event('Manthan');" style="font-size:1em;"><span style="text-decoration:underline;">Manthan:</span> Case study competition</li>
+                                        <li onClick="ajaxrequest_event('Brandaid');" style="font-size:1em;"><span style="text-decoration:underline;">Brand Aid:</span> Marketing Event</li>
+                                        <li onClick="ajaxrequest_event('Ventura');" style="font-size:1em;"><span style="text-decoration:underline;">Ventura:</span> B-Plan Competition with a twist</li>
+                                        <li onClick="ajaxrequest_event('Biz-Wiz');" style="font-size:1em;"><span style="text-decoration:underline;">Biz-Wiz:</span> Business Quiz</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -99,11 +111,10 @@
                             </ul>
                             <div id="tabs-1">
                                 {% block notificationcontent %}
-                                        <BR></BR>
                                         {% if general_notifs %}
                                             <ol>
                                                 {% for g_notif in general_notifs %}
-                                                    <li>  {{ g_notif.title }} : {{ g_notif.body }} </li>
+                                                    <li style="font-size:0.9em;">  {{ g_notif.title }} : {{ g_notif.body }} </li>
                                                 {% endfor %}
                                             </ol>
                                         {% else %}
@@ -164,7 +175,136 @@
                                 <li><a href="#tabs-2">HOSPITALITY</a></li>
                             </ul>
                             <div id="tabs-1">
-                                <p>Details to be uploaded very soon. Keep an eye out for this space.</p>
+                                <div id="gymadmin">
+                                    <table style="width:100%;font-size:0.9em;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    Prof. R.K. Mandal
+                                                    <br>President
+                                                    <br>IT - Gymkhana
+                                                </td>
+                                                <td>
+                                                    Mr. Satish Kanaujia
+                                                    <br>Administrative Officer
+                                                    <br>IT - Gymkhana
+                                                    <br>+91-9451964106
+                                                </td>
+                                                <td style="padding-bottom:20px;">
+                                                    Prof. Devendra Singh
+                                                    <br>Chairman
+                                                    <br>Co-Curricular Activities Wing
+                                                    <br>IT - Gymkhana
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-bottom:20px;">
+                                                    Bhanu Singh Chauhan
+                                                    <br>General Secretary
+                                                    <br>Co-Curricular Activities Wing
+                                                    <br>IT - Gymkhana
+                                                    <br>+91-9473868157
+                                                </td>
+                                                <td>
+                                                    Nakul Manocha
+                                                    <br>Joint General Secretary
+                                                    <br>Co-Curricular Activities Wing
+                                                    <br>IT - Gymkhana
+                                                    <br>+91-9005099509
+                                                </td>
+                                                <td>
+                                                    Keshav Dev Gupta
+                                                    <br>Student Convener
+                                                    <br>+91-9889532192
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div style="font-size:medium;margin-top:10px;">
+                                    <span style="font-weight:bold;text-decoration:underline;" onclick="$('#gymadmin').slideToggle();$(this).next().slideToggle();">Technical Team<br></span>
+                                    <div style="display:none;margin-top:10px;">
+                                        <ul>
+                                            <li style="font-size:0.9em;">
+                                                Ritesh
+                                                <br>+91-7668823329
+                                            </li>
+                                            <li style="font-size:0.9em;">
+                                                Shivam Agarwal
+                                                <br>+91-9559671531
+                                            </li>
+                                            <li style="font-size:0.9em;">
+                                                Bidyut Hota
+                                                <br>+91-9889251768
+                                            </li>
+                                            <li style="font-size:0.9em;">
+                                                Manik Goyal
+                                                <br>+91-8808525262
+                                            </li>
+                                            <li style="font-size:0.9em;">
+                                                Vishnu Kumar Shrimal
+                                                <br>+91-8756166673
+                                            </li>
+                                            <li style="font-size:0.9em;">
+                                                Pulkit Garg
+                                                <br>+91-9936673270
+                                            </li>
+                                            <li style="font-size:0.9em;">
+                                                Jatin Saini
+                                                <br>+91-9198418411
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div style="font-size:medium;margin-top:10px;">
+                                    <span style="font-weight:bold;text-decoration:underline;" onclick="$(this).next().slideToggle();">Marketing Team<br></span>
+                                    <div style="display:none;margin-top:10px;">
+                                        <ul>
+                                            <li style="font-size:0.9em;">
+                                                Sitanshu Gupta
+                                                <br>+91-9005729154
+                                            </li>
+                                            <li style="font-size:0.9em;">
+                                                Aniruddha Jhawar
+                                                <br>+91-9369803525
+                                            </li>
+                                            <li style="font-size:0.9em;">
+                                                Siddharth Singhal
+                                                <br>+91-9456619789
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div style="font-size:medium;margin-top:10px;">
+                                    <span style="font-weight:bold;text-decoration:underline;" onclick="$(this).next().slideToggle();">Publicity Team<br></span>
+                                    <div style="display:none;margin-top:10px;">
+                                        <ul>
+                                            <li style="font-size:0.9em;">
+                                                Mayank Shandilya
+                                                <br>+91-9935646331
+                                            </li>
+                                            <li style="font-size:0.9em;">
+                                                Paaras Saxena
+                                                <br>+91-9936527265
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div style="font-size:medium;margin-top:10px;">
+                                    <span style="font-weight:bold;text-decoration:underline;" onclick="$(this).next().slideToggle();">Creative &amp; Web Designing Team<br></span>
+                                    <div style="display:none;margin-top:10px;">
+                                        <ul>
+                                            <li style="font-size:0.9em;">
+                                                Mohit Pundir
+                                                <br>+91-9005768009
+                                            </li>
+                                            <li style="font-size:0.9em;">
+                                                Jaiditya Mathur
+                                                <br>+91-9559783696
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                             <div id="tabs-2">
                                 <p>Details to be uploaded very soon. Keep an eye out for this space.</p>
@@ -174,7 +314,7 @@
                 </div>
             </div>
             
-            <div style="overflow-y:scroll;" id="c7" class="content-box"> <!-- c7 is the 7th panel -->
+            <div id="c7" class="content-box"> <!-- c7 is the 7th panel -->
                 <div class="inner">
                     <div class="demo">
                         <div id="tabs">
