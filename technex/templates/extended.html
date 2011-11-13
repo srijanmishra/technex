@@ -34,7 +34,7 @@
         });
         // Function to load the events panel via AJAX.    
 	    function geteventinfo(){
-            $("div#c2").html('<img src="{{ STATIC_URL }}/pics/loading.gif"> Loading.... </img>');
+            $("div#c2").html('Loading.... ');
             panelswitch(1,50);
 	        $.ajax({
                 url: "/eventspanel/",
