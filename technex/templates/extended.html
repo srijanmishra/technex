@@ -31,15 +31,17 @@
             	 	panelswitch(currpanelind() + 1 , 1);
             	}
             });
-        });    
+        });
+        // Function to load the events panel via AJAX.    
 	    function geteventinfo(){
+            $("div#c2").html('<img src="{{ STATIC_URL }}/pics/loading.gif"> Loading.... </img>');
+            panelswitch(1,50);
 	        $.ajax({
                 url: "/eventspanel/",
                 dataType: "html",   
                 async: true,
                 success: function(response){
                     $("div#c2").html(response);
-                    panelswitch(1,50);
                 }
             });
         };
