@@ -70,11 +70,12 @@
 		}
 		
 		function robotrix(){
-			var str = '<div class="inner"><div class="demo"><div class="robotrix" id="tabs"><ul><li><a href="#tabs-1">ROBOTRIX</a></li></ul><div id="tabs-1"><ul id="robotics" style="position:relative;left:20%;top:-20px"><li title="ROBOWARS" id="spr_robowars" onClick="ajaxrequest_event(\'Robowars\');"></li><li title="I-ROBOT" id="spr_irobot" onClick="ajaxrequest_event(\'I-Robot\');"></li><li title="OPTIKA" id="spr_optika" onClick="ajaxrequest_event(\'Optika\');"></li><li title="DASH N TROUNCE" id="spr_dnt" onClick="ajaxrequest_event(\'Dash n Trounce\');"></li></ul><div style="font-size:0.9em;" id="child_con">';
-			str += 'Following are the categories of events under Robotrix:<ul style="margin-top:10px;"><li onClick="ajaxrequest_event(\'Robowars\');" style="font-size:1em;"><span style="text-decoration:underline;">Robowars:</span> The ultimate battle of robots</li><li onClick="ajaxrequest_event(\'I-Robot\');" style="font-size:1em;"><span style="text-decoration:underline;">I-Robot:</span> Line follower bot competition</li><li onClick="ajaxrequest_event(\'Optika\');" style="font-size:1em;"><span style="text-decoration:underline;">Optika:</span> Image processing bot competition</li><li onClick="ajaxrequest_event(\'Dash n Trounce\');" style="font-size:1em;"><span style="text-decoration:underline;">Dash n Trounce</span> Manual robotics competition</li></ul>';
-			str += '</div></div></div></div><!-- End demo --></div>';
-			$('#c2').html(str);
-			$('.robotrix').tabs();
+            var str = '<div class="inner"><div class="demo"><div class="robotrix" id="tabs"><ul><li><a href="#tabs-1">ROBOTRIX</a></li></ul><div id="tabs-1"><ul id="robotics" style="position:relative;left:20%;top:-20px"><li title="ROBOWARS" id="spr_robowars" onClick="ajaxrequest_event(\'Robowars\');"></li><li title="I-ROBOT" id="spr_irobot" onClick="ajaxrequest_event(\'I-Robot\');"></li><li title="OPTIKA" id="spr_optika" onClick="ajaxrequest_event(\'Optika\');"></li><li title="DASH N TROUNCE" id="spr_dnt" onClick="ajaxrequest_event(\'Dash n Trounce\');"></li></ul><div style="font-size:0.9em;" id="child_con">';
+            str += 'Following are the categories of events under Robotrix:<ul style="margin-top:10px;"><li onClick="ajaxrequest_event(\'Robowars\');" style="font-size:1em;"><span style="text-decoration:underline;">Robowars:</span> The ultimate battle of robots</li><li onClick="ajaxrequest_event(\'I-Robot\');" style="font-size:1em;"><span style="text-decoration:underline;">I-Robot:</span> Line follower bot competition</li><li onClick="ajaxrequest_event(\'Optika\');" style="font-size:1em;"><span style="text-decoration:underline;">Optika:</span> Image processing bot competition</li><li onClick="ajaxrequest_event(\'Dash n Trounce\');" style="font-size:1em;"><span style="text-decoration:underline;">Dash n Trounce</span> Manual robotics competition</li>';
+            str += '<li onClick="ajaxrequest_event(\'Aqua Combat\');" style="font-size:1em;"><span style="text-decoration:underline;">Aqua Combat:</span> Underwater event</li></ul>';
+            str += '</div></div></div></div><!-- End demo --></div>';
+            $('#c2').html(str);
+            $('.robotrix').tabs();
 		}
 		
 		function xtrmengg(){
