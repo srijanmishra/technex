@@ -34,7 +34,7 @@
         });
         // Function to load the events panel via AJAX.    
 	    function geteventinfo(){
-            $("div#c2").html('Loading.... ');
+            $("div#loading").slideToggle();
             panelswitch(1,50);
 	        $.ajax({
                 url: "/eventspanel/",
@@ -42,6 +42,7 @@
                 async: true,
                 success: function(response){
                     $("div#c2").html(response);
+                    $("div#loading").slideToggle();
                 }
             });
         };
@@ -50,6 +51,7 @@
     <script type="text/javascript">
 
         function ajaxrequest_event(eventname){
+            $("div#loading").slideToggle();
             $.ajax({
                 url: "/events/",
                 global: false,
@@ -65,6 +67,7 @@
                         async: true,
                         success: function(response3){
                             $("div#c2").html(response3);
+                            $("div#loading").slideToggle();
                         }
                     });
                 }
@@ -92,6 +95,7 @@
 
     <script type="text/javascript">
         function ajaxrequest_mypage(){
+            $("div#loading").slideToggle();
             $.ajax({
                 url: "/mypage/",
                 type: "POST",
@@ -111,7 +115,8 @@
                         panelswitch(3,50);
                     {% else %}
                         document.location = "/accounts/login";
-                    {% endif %}                              
+                    {% endif %}                       
+                    $("div#loading").slideToggle();
                 }
             });
 	    };

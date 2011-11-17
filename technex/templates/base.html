@@ -36,6 +36,7 @@
         </script>
     </head>
     <body style="background: #12091a;background-image:url('{{ STATIC_URL }}pics/background.jpg');background-repeat: no-repeat";>
+        <div id="loading" style="height:10px; width:100px; color:white; opacity:1; display:none; position:absolute; top:0%; left: 50%;"> Loading.... </div>
         {% block content %}
         {% endblock %}
     </body>
