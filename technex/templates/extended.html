@@ -85,8 +85,10 @@
 		
 		function xtrmengg(){
 			var str = '<div class="inner"><div class="demo"><div class="xtrmengg" id="tabs"><ul><li><a href="#tabs-1">XTREME ENGINEERING</a></li></ul><div id="tabs-1"><ul id="extreme_engg" style="position:relative;left:20%;top:-20px"><li title="GOLDBERG\'S ALLEY" id="spr_gldbrg" onClick="ajaxrequest_event(\'Goldbergs Alley\');"></li><!--<li title="I-ROBOT" id="spr_irobot" onClick="ajaxrequest_event(\'I-Robot\');"></li><li title="OPTIKA" id="spr_optika" onClick="ajaxrequest_event(\'Optika\');"></li><li title="DASH N TROUNCE" id="spr_dnt" onClick="ajaxrequest_event(\'Dash n Trounce\');"></li>--></ul><div style="font-size:0.9em;" id="child_con">';
-			str += 'Following are the categories of events under Xtreme Engineering:<ul style="margin-top:10px;"><li onClick="ajaxrequest_event(\'Goldbergs Alley\');" style="font-size:1em;"><span style="text-decoration:underline;">Goldbergs Alley</span></li></ul>';
-			str += '</div></div></div></div><!-- End demo --></div>';
+			str += 'Following are the categories of events under Xtreme Engineering:<ul style="margin-top:10px;">';
+			str += '<li onClick="ajaxrequest_event(\'Goldbergs Alley\');" style="font-size:1em;"><span style="text-decoration:underline;">Goldbergs Alley</span></li>';
+			str += '<li onClick="ajaxrequest_event(\'Res Novae\');" style="font-size:1em;"><span style="text-decoration:underline;">Res Novae</span></li>';
+			str += '</ul></div></div></div></div><!-- End demo --></div>';
 			$('#c2').html(str);
 			$('.xtrmengg').tabs();
 		}
