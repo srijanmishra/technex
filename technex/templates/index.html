@@ -125,7 +125,7 @@
                                         {% if general_notifs %}
                                             <ol>
                                                 {% for g_notif in general_notifs %}
-                                                    <li style="font-size:0.9em;">  {{ g_notif.title }} : {{ g_notif.body }} </li>
+                                                    <li style="font-size:0.9em;">  {{ g_notif.title }} : {{ g_notif.body|safe }} </li>
                                                 {% endfor %}
                                             </ol>
                                         {% else %}

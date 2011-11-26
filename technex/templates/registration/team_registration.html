@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{% block title %}Technex 2012 - Team Registration{% endblock %}</title>
+        <meta name="description" content="Technex - The annual techno-management festival of Institute of Technology, Banaras Hindu University">
+        <meta name="author" content="Kushagra Sinha (http://j4nu5.com), Srijan Mishra, Pranjal Mittal (http://pranjalmittal.co.cc), Azhar Hussain, Kaushal Singh (http://kaushalsingh.co.cc)">
+        <meta name="keywords" content="technology, technical festival, technex, it-bhu">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <link rel="shortcut icon" href="{{ STATIC_URL }}pics/favicon.ico">
+        {% block externals %}
+            <script src="{{ STATIC_URL }}js/jquery.js" type="text/javascript"></script>
+        {% endblock %}
+
+        <style>
+            input, select {
+                display: block;
+            }
+            .errorlist {
+                color: red;
+            }
+            * {
+                font-family: Helvetica;
+            }
+        </style>
+        
+        <script>
+            var tmp;
+            function validation(){
+                //Send an ajax request to check valid team name
+                tmp = $(this);
+                if (!tmp.val()) {
+                    tmp.next().html('');
+                    $("#submit").removeAttr('disabled');
+                    return;
+                }
+                data = {
+                    username: tmp.val()
+                }
+                tmp.next().html('Loading user information. Please wait ...');
+                $.ajax({
+                    url: "/user/",
+                    data: data,
+                    success: function(data) {
+                        html = data + ' will be added to the team.';
+                        tmp.next().html(html);
+                        $("#submit").removeAttr('disabled');
+                    },
+                    error: function() {
+                        html = 'Invalid/Unregistered username. Kindly register on the site first.';
+                        tmp.next().html(html);
+                        $("#submit").attr('disabled', 'true');
+                    }
+                });
+            }
+            $(function(){
+                $("#id_user1").after('<div></div>');
+                $("#id_user2").after('<div></div>');
+                $("#id_user3").after('<div></div>');
+                $("#id_user4").after('<div></div>');
+                $("#id_user5").after('<div></div>');
+                $("#id_user1").blur(validation);
+                $("#id_user2").blur(validation);
+                $("#id_user3").blur(validation);
+                $("#id_user4").blur(validation);
+                $("#id_user5").blur(validation);
+            });
+        </script>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-26873860-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </head>
+    <body>
+        <h1>Technex 2012 - Team Registration</h1>
+        <form action="." method="post">
+            {% csrf_token %}
+            <ul>
+                {{ form.as_ul }}
+            </ul>
+            <input disabled="true" type="submit" id="submit" value="Submit">
+        </form>
+    </body>
+</html>
