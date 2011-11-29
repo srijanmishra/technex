@@ -48,7 +48,7 @@
                         $("#submit").removeAttr('disabled');
                     },
                     error: function() {
-                        html = 'Invalid/Unregistered username. Kindly register on the site first.';
+                        html = 'Kindly register on the site first. Invalid/Unregistered username.';
                         tmp.next().html(html);
                         $("#submit").attr('disabled', 'true');
                     }
